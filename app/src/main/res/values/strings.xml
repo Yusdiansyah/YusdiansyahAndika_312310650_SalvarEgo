@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SalvarEgo</string>
+    <string name="Email">Email</string>
+    <string name="password">Password</string>
+    <string name="Login">Log in</string>
+    <string name="Salvarego">SalvarEgo</string>
+    <string name="point">.</string>
+</resources>
