@@ -5,4 +5,10 @@
     <string name="Login">Log in</string>
     <string name="Salvarego">SalvarEgo</string>
     <string name="point">.</string>
+    <string name="tombol_home">tombol home</string>
+    <string name="tombol_add_file">tombol add file</string>
+    <string name="tombol_profile">tombol profile</string>
+    <string name="tombol_memilih_folder">tombol memilih folder</string>
+    <string name="title_activity_folder_item">folder_item</string>
+    <string name="title_activity_folder_item.xml">folder_item.xml</string>
 </resources>

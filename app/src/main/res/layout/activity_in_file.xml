@@ -1,73 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:id="@+id/main"
     android:padding="16dp"
-    android:background="@drawable/infile">
+    android:background="@drawable/base_file">
 
-    <Button
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:id="@+id/backbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="@string/point"
+        android:contentDescription="backtomainbutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="300dp"
-        android:layout_height="85dp"
-        android:text="@string/Login"
-        android:id="@+id/tofilebtn"
-        android:textColor="@color/transp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/toback"/>
 
-    <Button
-        android:id="@+id/homebtn"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="@string/point"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewinfile"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:layout_editor_absoluteX="-84dp" />
 
-    <Button
-        android:id="@+id/addbtn"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="@string/point"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="330dp"
+        android:layout_height="70dp"
 
-    <Button
-        android:id="@+id/profilebtn"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:text="@string/point"
+        android:background="@drawable/kotak_mulus"
+
+        app:itemIconTint="@color/transp"
+        app:itemTextColor="@color/transp"
+        android:layout_marginBottom="16dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.838"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/homebtn"
+            android:background="@drawable/navhome"
+            android:layout_marginVertical="9dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/tombol_home"
+            />
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/addbtn"
+            android:background="@drawable/navadd"
+            android:layout_gravity="center"
+            android:contentDescription="@string/tombol_add_file"
+            />
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/profilebtn"
+            android:background="@drawable/logoutfit"
+            android:layout_gravity="end"
+            android:layout_marginEnd="25dp"
+            android:layout_marginVertical="9dp"
+            android:contentDescription="@string/tombol_profile"
+            />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
