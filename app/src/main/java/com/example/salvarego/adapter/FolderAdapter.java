@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.salvarego.R;
 import com.example.salvarego.model.folder_item;
+import com.example.salvarego.model.FileItem;
 
 import java.util.List;
 
@@ -28,11 +29,33 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(folder_item folderItem);
+    }
+
+    private OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.onItemClickListener = listener;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         folder_item folderItem = folderList.get(position);
         holder.folderNameText.setText(folderItem.getFoldername());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick(folderItem);
+            }
+        });
     }
+
+    public void updateData(List<folder_item> newFolderList) {
+        this.folderList = newFolderList;
+        notifyDataSetChanged(); // Notify the adapter of data changes
+    }
+
 
     @Override
     public int getItemCount() {

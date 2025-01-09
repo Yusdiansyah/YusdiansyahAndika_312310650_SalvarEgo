@@ -1,9 +1,20 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SalvarEgo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <!-- Base application theme -->
+    <style name="Base.Theme.SalvarEgo" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your base theme here -->
     </style>
 
-    <style name="Theme.SalvarEgo" parent="Base.Theme.SalvarEgo" />
+    <!-- Splash screen theme -->
+    <style name="Theme.SalvarEgo.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Fullscreen splash -->
+        <item name="android:windowBackground">@drawable/splashbase</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+
+    <!-- Main application theme -->
+    <style name="Theme.SalvarEgo" parent="Base.Theme.SalvarEgo">
+        <!-- Add your customizations here -->
+    </style>
 </resources>

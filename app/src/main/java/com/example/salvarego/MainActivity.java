@@ -1,12 +1,10 @@
 package com.example.salvarego;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
@@ -22,27 +20,27 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.example.salvarego.adapter.FolderAdapter;
 import com.example.salvarego.model.folder_item;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton homebutton, addbutton, profilebutton, tofilebutton;
+    ImageButton homebutton, addbutton, logoutbutton;
     private RecyclerView recyclerView;
     private FolderAdapter folderAdapter;
     private List<folder_item> folderList;
-    int screenheightmain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        screenheightmain = getResources().getDisplayMetrics().heightPixels;
-
         homebutton = findViewById(R.id.homebtn);
         addbutton = findViewById(R.id.addbtn);
-        profilebutton = findViewById(R.id.profilebtn);
+        logoutbutton = findViewById(R.id.logoutbtn);
+
+        ImageButton createFolderButton = findViewById(R.id.create_folder_btn);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             v.setPadding(insets.getInsets(WindowInsetsCompat.Type.systemBars()).left,
@@ -74,15 +72,55 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         folderList = new ArrayList<>();
-        folderList.add(new folder_item("Folder 1"));
-        folderList.add(new folder_item("Folder 2"));
-        folderList.add(new folder_item("Folder 3"));
-
         folderAdapter = new FolderAdapter(folderList);
         recyclerView.setAdapter(folderAdapter);
 
+        // Load folders from storage
+        loadFolders();
+
         homebutton.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
         addbutton.setOnClickListener(v -> startActivity(new Intent(this, AddFileActivity.class)));
-        profilebutton.setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
+        logoutbutton.setOnClickListener(v -> {
+            finishAffinity();
+        });
+        createFolderButton.setOnClickListener(v -> createUniqueFolder());
+        folderAdapter.setOnItemClickListener(folderItem -> {
+            openAddFileActivity(folderItem.getFoldername());
+        });
+    }
+
+    private void openAddFileActivity(String folderPath) {
+        Intent intent = new Intent(this, InFileActivity.class);
+        intent.putExtra("FOLDER_PATH", folderPath);
+        startActivity(intent);
+    }
+
+    private void createUniqueFolder() {
+        String folderName = "Folder_" + System.currentTimeMillis();
+        File folder = new File(getFilesDir(), folderName);
+
+        if (!folder.exists() && folder.mkdirs()) {
+            folderList.add(new folder_item(folderName));
+            folderAdapter.notifyItemInserted(folderList.size() - 1);
+            Toast.makeText(this, "Folder created: " + folder.getAbsolutePath(), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Failed to create folder.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void loadFolders() {
+        File appDirectory = getFilesDir();
+        File[] directories = appDirectory.listFiles();
+        folderList.clear();
+
+        if (directories != null) {
+            for (File directory : directories) {
+                if (directory.isDirectory()) {
+                    folderList.add(new folder_item(directory.getName()));
+                }
+            }
+        }
+
+        folderAdapter.notifyDataSetChanged();
     }
 }

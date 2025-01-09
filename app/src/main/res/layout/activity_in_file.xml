@@ -21,6 +21,33 @@
         android:layout_marginStart="20dp"
         android:background="@drawable/toback"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/folder_path_textview"
+        android:text=""
+        android:textSize="25sp"
+        android:fontFamily="@font/righteous"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/upload_file_button"
+        android:contentDescription="upload file button"
+        android:background="@drawable/upfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="30dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/viewinfile"
         android:layout_width="match_parent"
@@ -64,7 +91,7 @@
         <ImageButton
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:id="@+id/profilebtn"
+            android:id="@+id/logoutbtn"
             android:background="@drawable/logoutfit"
             android:layout_gravity="end"
             android:layout_marginEnd="25dp"

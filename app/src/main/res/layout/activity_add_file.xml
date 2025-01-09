@@ -10,10 +10,10 @@
     android:background="@drawable/base">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:id="@+id/upload_icon"
-        android:background="@drawable/upload_file_icon"
+        android:background="@drawable/uplogofile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -64,10 +64,10 @@
         tools:layout_editor_absoluteY="291dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:id="@+id/upload_device"
-        android:background="@drawable/uploadbutton"
+        android:background="@drawable/updevice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -76,10 +76,10 @@
         />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
         android:id="@+id/upload_cloud"
-        android:background="@drawable/uploadcloud"
+        android:background="@drawable/downclouds"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
@@ -119,10 +119,11 @@
             android:layout_gravity="center"
             android:contentDescription="@string/tombol_add_file"
             />
+
         <ImageButton
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:id="@+id/profilebtn"
+            android:id="@+id/logoutbtn"
             android:background="@drawable/logoutfit"
             android:layout_gravity="end"
             android:layout_marginEnd="25dp"
